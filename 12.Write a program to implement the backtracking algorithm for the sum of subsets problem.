@@ -1,0 +1,17 @@
+def subset_sum(arr, target, i=0, curr=[]):
+    if sum(curr) == target:
+        print("Solution:", curr)
+        return
+
+    if i == len(arr) or sum(curr) > target:
+        return
+
+    subset_sum(arr, target, i + 1, curr + [arr[i]])  # include element
+    subset_sum(arr, target, i + 1, curr)             # exclude element
+
+
+n = int(input("Enter number of elements: "))
+arr = [int(input()) for _ in range(n)]
+target = int(input("Enter target sum: "))
+
+subset_sum(arr, target)
