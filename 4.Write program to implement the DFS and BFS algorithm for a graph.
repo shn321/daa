@@ -1,0 +1,35 @@
+graph = {
+    'A': ['B', 'C'],
+    'B': ['C'],
+    'C': ['A', 'D'],
+    'D': []
+}
+
+def bfs(start):
+    visited = []
+    queue = [start]
+
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            queue += graph[node]
+
+    return visited
+
+
+def dfs(start):
+    visited = []
+    stack = [start]
+
+    while stack:
+        node = stack.pop()
+        if node not in visited:
+            visited.append(node)
+            stack += graph[node]
+
+    return visited
+
+
+print("BFS:", bfs('C'))
+print("DFS:", dfs('C'))
