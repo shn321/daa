@@ -1,0 +1,16 @@
+def knapsack(weights, profits, capacity):
+    n = len(weights)
+    dp = [0] * (capacity + 1)
+
+    for i in range(n):
+        for c in range(capacity, weights[i] - 1, -1):
+            dp[c] = max(dp[c], profits[i] + dp[c - weights[i]])
+
+    return dp[capacity]
+
+
+weights = [10, 20, 30]
+profits = [60, 100, 120]
+capacity = 50
+
+print("Max Profit:", knapsack(weights, profits, capacity))
